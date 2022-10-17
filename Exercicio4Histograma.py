@@ -10,7 +10,6 @@ image = cv2.imread(os.path.join(folder, "baboon.png"))
 # image = cv2.imread(os.path.join(folder, "lena.png"))
 # image = cv2.imread(os.path.join(folder, "moedas.jpg"))
 # image = cv2.imread(os.path.join(folder, "PET-Body-02.jpg"))
-# image = cv2.imread(os.path.join(folder, "rockefeller-center-1932-RGB.png"))
 # image = cv2.imread(os.path.join(folder, "Sharbat_Gula.jpg"))
 
 image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
