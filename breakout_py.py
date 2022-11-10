@@ -1,4 +1,5 @@
 import tkinter as tk
+from breakout_cv import *
 
 
 class GameObject(object):
@@ -133,6 +134,7 @@ class Game(tk.Frame):
                          lambda _: self.paddle.move(-10))
         self.canvas.bind('<Right>',
                          lambda _: self.paddle.move(10))
+        cv_setup(self)
 
     def setup_game(self):
            self.add_ball()
@@ -174,10 +176,10 @@ class Game(tk.Frame):
     def game_loop(self):
         self.check_collisions()
         num_bricks = len(self.canvas.find_withtag('brick'))
-        if num_bricks == 0: 
+        if num_bricks == 0:
             self.ball.speed = None
             self.draw_text(300, 200, 'You win!')
-        elif self.ball.get_position()[3] >= self.height: 
+        elif self.ball.get_position()[3] >= self.height:
             self.ball.speed = None
             self.lives -= 1
             if self.lives < 0:
