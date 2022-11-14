@@ -4,12 +4,14 @@
 # y1 = m x1 + c
 # y2 = m x2 + c
 # y3 = m x3 + c
+# y4 = m x4 + c
 # equivalent to A p = y
 # with
 # A = [x0 1
 #      x1 1
 #      x2 1
-#      x3 1]
+#      x3 1
+#      x4 1]
 #  p = [m
 #       c]
 import numpy as np
