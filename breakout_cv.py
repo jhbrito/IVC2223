@@ -7,7 +7,7 @@ def cv_setup(game):
 
 
 def cv_init(game):
-    game.cap = cv2.VideoCapture()
+    game.cap = cv2.VideoCapture(0)
     if not game.cap.isOpened():
         game.cap.open(-1)
     # rest of init
