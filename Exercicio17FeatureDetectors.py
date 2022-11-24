@@ -7,8 +7,8 @@ imagem_gray = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 cv2.imshow("Imagem Gray", imagem_gray)
 
 harris_corners = cv2.cornerHarris(imagem_gray, blockSize=2, ksize=3, k=0.04)
-# cv2.imshow("harris_corners", harris_corners)
-imagem_harris = imagem.copy()
+cv2.imshow("harris_corners", cv2.normalize(harris_corners, None, 0.0, 1.0, cv2.NORM_MINMAX))
+imagem_harris = cv2.cvtColor(imagem_gray, cv2.COLOR_GRAY2BGR)
 imagem_harris[harris_corners > 0.01*harris_corners.max()] = [255, 0, 0]
 cv2.imshow("imagem_harris", imagem_harris)
 
