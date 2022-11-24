@@ -13,4 +13,31 @@ imagem_dual[:,s2[1]:,:] = imagem2
 
 cv2.namedWindow("Imagem", cv2.WINDOW_AUTOSIZE)
 cv2.imshow("Imagem", imagem_dual)
+
+sift = cv2.SIFT_create()
+sift_kp1, sift_desc1 = sift.detectAndCompute(imagem1, None)
+sift_kp2, sift_desc2 = sift.detectAndCompute(imagem2, None)
+
+imagem1_sift = imagem1.copy()
+imagem1_sift = cv2.drawKeypoints(imagem1_sift, sift_kp1, None)
+cv2.imshow("imagem1_sift", imagem1_sift)
+
+imagem2_sift = imagem2.copy()
+imagem2_sift = cv2.drawKeypoints(imagem2_sift, sift_kp2, None)
+cv2.imshow("imagem2_sift", imagem2_sift)
+
+distances = np.zeros((len(sift_kp1), len(sift_kp2)), dtype=np.float64)
+
+for i in range(len(sift_kp1)):
+    if not (i % 100):
+        print(i)
+    for j in range(len(sift_kp2)):
+        desc_i_p1 = sift_desc1[i, :]
+        desc_j_p2 = sift_desc2[j, :]
+        dif = desc_i_p1 - desc_j_p2
+        abs_dif = np.abs(dif)
+        sum_abs_dif = np.sum(abs_dif)
+        distances[i, j] = sum_abs_dif
+
+
 cv2.waitKey(0)
